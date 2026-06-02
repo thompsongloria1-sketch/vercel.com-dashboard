@@ -6,18 +6,20 @@
     <title>Veloréva Studios | Luxury Cinematic Custom Songs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --cream: #F9F6F0;
-            --burgundy: #5B0F1A;
-            --gold: #D4AF37;
-            --white: #FFFFFF;
-            --text-dark: #2C2C2C;
+            --bg-dark: #0B090A;
+            --bg-card: #161214;
+            --burgundy-deep: #2B060C;
+            --gold-bright: #F3E5AB;
+            --gold-metallic: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            --gold-solid: #D4AF37;
+            --text-light: #F9F6F0;
+            --text-muted: #A39A92;
             --font-serif: 'Cormorant Garamond', serif;
             --font-display: 'Cinzel', serif;
-            --font-sans: 'Montserrat', sans-serif;
         }
 
         * {
@@ -27,11 +29,24 @@
         }
 
         body {
-            background-color: var(--cream);
-            color: var(--burgundy);
-            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-serif);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: 1px;
+        }
+
+        /* Premium Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-solid);
+            border-radius: 3px;
         }
 
         /* Header Navigation */
@@ -43,33 +58,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(249, 246, 240, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(11, 9, 10, 0.85);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(91, 15, 26, 0.05);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .logo-nav {
             font-family: var(--font-display);
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 6px;
+            font-weight: 500;
             text-decoration: none;
-            color: var(--burgundy);
+            color: var(--text-light);
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--burgundy);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-left: 2.5rem;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-left: 3rem;
+            transition: color 0.4s, letter-spacing 0.4s;
         }
 
         nav a:hover {
-            color: var(--gold);
+            color: var(--gold-bright);
+            letter-spacing: 4px;
         }
 
         /* Hero Section */
@@ -81,38 +100,46 @@
             align-items: center;
             text-align: center;
             padding: 0 2rem;
-            background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(249,246,240,1) 100%);
+            background: radial-gradient(circle at center, rgba(43, 6, 12, 0.4) 0%, rgba(11, 9, 10, 1) 70%);
+            position: relative;
         }
 
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            letter-spacing: 8px;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.02"/%3E%3C/svg%3E');
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            max-width: 320px;
+            height: auto;
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
+            animation: fadeIn 2s ease forwards;
         }
 
         .hero-subtitle {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            font-weight: 300;
             font-style: italic;
-            color: var(--text-dark);
-            max-width: 600px;
-            margin-bottom: 3rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 2rem;
             line-height: 1.4;
         }
 
         .hero-tagline {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            color: var(--gold-solid);
         }
 
-        /* Occasions / Editorial Grid */
+        /* Bespoke Collections Section */
         .occasions {
-            padding: 8rem 4rem;
+            padding: 10rem 4rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -120,150 +147,191 @@
         .section-title {
             font-family: var(--font-display);
             text-align: center;
-            font-size: 2rem;
-            letter-spacing: 6px;
-            margin-bottom: 5rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-            margin: 1.5rem auto 0;
+            font-size: 2.4rem;
+            letter-spacing: 8px;
+            margin-bottom: 6rem;
+            font-weight: 400;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 3.5rem;
         }
 
         .card {
-            background: var(--white);
-            padding: 3.5rem 2.5rem;
-            border: 1px solid rgba(91, 15, 26, 0.05);
+            background: var(--bg-card);
+            padding: 4rem 2.5rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(91, 15, 26, 0.02);
-            transition: transform 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* Enhanced Luxury Gold Lines */
+            border: 1px solid transparent;
+            border-image: var(--gold-metallic) 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
         }
 
         .card-icon {
-            font-size: 1rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--gold-bright);
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
         }
 
         .card-h3 {
             font-family: var(--font-display);
-            font-size: 1.4rem;
-            letter-spacing: 3px;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
             margin-bottom: 1.5rem;
             font-weight: 400;
+            color: var(--text-light);
         }
 
         .card-p {
-            font-family: var(--font-serif);
             font-size: 1.2rem;
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
-        /* Packages Section */
+        /* Video System */
+        .video-container {
+            display: none;
+            margin-top: 2rem;
+            width: 100%;
+            border: 1px solid var(--gold-solid);
+            background: #000;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .interactive-hint {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--gold-solid);
+            opacity: 0.7;
+            margin-top: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .interactive-hint {
+            opacity: 1;
+        }
+
+        /* Commissions / Pricing Section */
         .packages-section {
-            background-color: var(--white);
-            padding: 8rem 4rem;
+            background-color: #0E0B0C;
+            padding: 10rem 4rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .packages-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
         .package-tier {
-            border: 1px solid rgba(91, 15, 26, 0.1);
-            padding: 4rem 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 5rem 3rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background: var(--cream);
+            position: relative;
         }
 
         .package-tier.featured {
-            border: 1px solid var(--gold);
-            position: relative;
+            border: 1px solid transparent;
+            border-image: var(--gold-metallic) 1;
+            background: linear-gradient(rgba(22, 18, 20, 0.95), rgba(22, 18, 20, 0.95)), var(--gold-metallic);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
         }
 
         .package-tier.featured::before {
             content: 'SIGNATURE SELECTION';
             position: absolute;
             top: -12px;
-            background: var(--gold);
-            color: var(--white);
+            background: var(--gold-solid);
+            color: var(--bg-dark);
+            font-family: var(--font-display);
             font-size: 0.65rem;
-            padding: 4px 12px;
-            letter-spacing: 2px;
+            padding: 5px 16px;
+            letter-spacing: 3px;
             font-weight: 600;
         }
 
         .tier-title {
             font-family: var(--font-display);
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
         }
 
         .tier-price {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 2rem;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold-bright);
+            margin-bottom: 2.5rem;
         }
 
         .tier-features {
             list-style: none;
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            color: var(--text-dark);
-            line-height: 2.2;
-            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 2.4;
+            margin-bottom: 4rem;
             flex-grow: 1;
         }
 
         .cta-btn {
             display: inline-block;
             width: 100%;
-            padding: 1rem 0;
-            background: var(--burgundy);
-            color: var(--cream);
+            padding: 1.2rem 0;
+            background: transparent;
+            color: var(--text-light);
+            font-family: var(--font-display);
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.8rem;
             text-decoration: none;
-            transition: background 0.3s, color 0.3s;
-            border: 1px solid var(--burgundy);
+            border: 1px solid transparent;
+            border-image: var(--gold-metallic) 1;
+            transition: all 0.4s ease;
+            text-align: center;
         }
 
         .cta-btn:hover {
-            background: transparent;
-            color: var(--burgundy);
+            background: var(--gold-solid);
+            color: var(--bg-dark);
+            font-weight: 600;
         }
 
-        /* How it Works */
+        /* Process Section */
         .process-section {
-            padding: 8rem 4rem;
+            padding: 10rem 4rem;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -271,7 +339,7 @@
         .process-step {
             display: flex;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         .process-step:nth-child(even) {
@@ -281,66 +349,154 @@
 
         .process-number {
             font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--gold);
-            opacity: 0.5;
-            width: 100px;
+            font-size: 3.5rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.6;
+            width: 120px;
         }
 
         .process-text {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--burgundy);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-light);
+            line-height: 1.5;
         }
 
-        /* Footer / Contact */
+        /* Enquiry Section */
+        .enquiry-section {
+            background-color: var(--bg-card);
+            padding: 10rem 4rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .enquiry-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .enquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .form-group label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-light);
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            transition: border-color 0.4s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-solid);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        .submit-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid transparent;
+            border-image: var(--gold-metallic) 1;
+            padding: 1.4rem;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-solid);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        /* Footer */
         footer {
-            background: var(--burgundy);
-            color: var(--cream);
+            background: var(--bg-dark);
+            color: var(--text-muted);
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .footer-logo {
             font-family: var(--font-display);
             font-size: 2rem;
-            letter-spacing: 6px;
-            margin-bottom: 1.5rem;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .footer-tagline {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-style: italic;
-            opacity: 0.8;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .footer-contact {
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
         }
 
         .footer-contact a {
-            color: var(--cream);
+            color: var(--text-light);
             text-decoration: none;
+            border-bottom: 1px dashed var(--gold-solid);
         }
 
         .footer-social {
-            margin-top: 2rem;
+            margin-top: 3rem;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            opacity: 0.6;
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media(max-width: 768px) {
             header { padding: 1.5rem; }
             nav { display: none; }
-            .hero-title { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.4rem; }
-            .occasions, .packages-section { padding: 4rem 1.5rem; }
-            .grid-3 { gap: 2rem; }
+            .hero-logo { max-width: 240px; }
+            .hero-subtitle { font-size: 1.6rem; }
+            .occasions, .packages-section, .enquiry-section { padding: 5rem 1.5rem; }
+            .grid-3 { gap: 2.5rem; }
         }
     </style>
 </head>
@@ -352,12 +508,13 @@
             <a href="#commissions">Commissions</a>
             <a href="#packages">Packages</a>
             <a href="#process">Process</a>
+            <a href="#enquiry">Enquire</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1 class="hero-title">VELORÉVA STUDIOS</h1>
+        <img src="logo.png" alt="Veloréva Studios Logo" class="hero-logo">
         <p class="hero-subtitle">Luxury cinematic songs for life’s most meaningful moments.</p>
         <p class="hero-tagline">“Your memories, composed forever.”</p>
     </section>
@@ -365,30 +522,89 @@
     <section id="commissions" class="occasions">
         <h2 class="section-title">The Bespoke Collections</h2>
         <div class="grid-3">
-            <div class="card">
+            <div class="card" onclick="toggleVideo(this)">
                 <div class="card-icon">✧ Memorial</div>
                 <h3 class="card-h3">Funeral Tributes</h3>
                 <p class="card-p">A heartfelt tribute that honors their life, love, and legacy through professional bespoke composition.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/funeral-tribute-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleVideo(this)">
                 <div class="card-icon">✧ Honor</div>
                 <h3 class="card-h3">Graduation</h3>
                 <p class="card-p">Celebrate monumental achievements with a timeless, elegant, personalized cinematic soundtrack.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/graduation-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleVideo(this)">
                 <div class="card-icon">✧ Celebration</div>
                 <h3 class="card-h3">Birthdays</h3>
                 <p class="card-p">Make their special milestone strictly unforgettable with a high-end song crafted just for them.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/birthday-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleVideo(this)">
                 <div class="card-icon">✧ Devotion</div>
                 <h3 class="card-h3">Anniversaries</h3>
                 <p class="card-p">Relive your unique love story through masterfully produced music arranged straight from the heart.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/anniversary-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-            <div class="card">
+            <div class="card" onclick="toggleVideo(this)">
                 <div class="card-icon">✧ Romance</div>
                 <h3 class="card-h3">Weddings</h3>
                 <p class="card-p">The definitive haute couture soundtrack meticulously composed for your unforgettable day.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/wedding-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="card" onclick="toggleVideo(this)">
+                <div class="card-icon">✧ Intent</div>
+                <h3 class="card-h3">Proposals</h3>
+                <p class="card-p">Set a breathtaking, cinematic ambience for your once-in-a-lifetime question with a customized arrangement.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/proposal-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="card" onclick="toggleVideo(this)">
+                <div class="card-icon">✧ Spirit & Vision</div>
+                <h3 class="card-h3">Corporate & Praise Worship</h3>
+                <p class="card-p">Elevate professional branding media horizons or connect deeply through custom-arranged, masterfully produced devotional compositions.</p>
+                <p class="interactive-hint">Click to Preview Collection</p>
+                <div class="video-container">
+                    <video controls playsinline autoplay muted loop preload="auto">
+                        <source src="videos/worship-corporate-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
     </section>
@@ -398,7 +614,7 @@
         <div class="packages-container">
             <div class="package-tier">
                 <h3 class="tier-title">The Signature</h3>
-                <div class="tier-price">£69</div>
+                <div class="tier-price">£70</div>
                 <ul class="tier-features">
                     <li>1 Custom Song (2.30 Minutes)</li>
                     <li>Elegant Digital Cover Art</li>
@@ -452,6 +668,31 @@
         </div>
     </section>
 
+    <section id="enquiry" class="enquiry-section">
+        <div class="enquiry-container">
+            <h2 class="section-title">Bespoke Enquiry</h2>
+            <form class="enquiry-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your elegant name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="e.g. 07784393456">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Vision</label>
+                    <textarea id="message" name="message" required placeholder="Describe the milestones, memories, or style you wish to compose into a custom soundtrack..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Commission Request</button>
+            </form>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="footer-logo">VELORÉVA STUDIOS</div>
         <p class="footer-tagline">Let’s turn your story into a song.</p>
@@ -463,5 +704,29 @@
         </div>
     </footer>
 
+    <script>
+        function toggleVideo(cardElement) {
+            const videoContainer = cardElement.querySelector('.video-container');
+            const videoElement = videoContainer.querySelector('video');
+            
+            if (videoContainer.style.display === 'block') {
+                videoContainer.style.display = 'none';
+                videoElement.pause();
+            } else {
+                videoContainer.style.display = 'block';
+                videoElement.currentTime = 0;
+                videoElement.play().catch(function(error) {
+                    console.log("Autoplay context initialization notice:", error);
+                });
+            }
+        }
+
+        const videoWrappers = document.querySelectorAll('.video-container');
+        videoWrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>
